@@ -1,0 +1,55 @@
+<form class="lead-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <label class="lead-form__field">
+    <span class="lead-form__label">Seu nome</span>
+    <input type="text" formControlName="name" autocomplete="name" placeholder="Como posso te chamar?" [attr.aria-invalid]="hasError('name')" />
+    @if (hasError('name')) {
+      <span class="lead-form__error" role="alert">Campo obrigatório</span>
+    }
+  </label>
+
+  <label class="lead-form__field">
+    <span class="lead-form__label">Nome do seu negócio</span>
+    <input type="text" formControlName="businessName" placeholder="Ex.: Salão da Maria" [attr.aria-invalid]="hasError('businessName')" />
+    @if (hasError('businessName')) {
+      <span class="lead-form__error" role="alert">Campo obrigatório</span>
+    }
+  </label>
+
+  <label class="lead-form__field">
+    <span class="lead-form__label">Tipo de negócio</span>
+    <select formControlName="businessType" [attr.aria-invalid]="hasError('businessType')">
+      <option value="">Selecione…</option>
+      @for (type of businessTypes; track type) {
+        <option [value]="type">{{ type }}</option>
+      }
+    </select>
+    @if (hasError('businessType')) {
+      <span class="lead-form__error" role="alert">Campo obrigatório</span>
+    }
+  </label>
+
+  <label class="lead-form__field">
+    <span class="lead-form__label">Você já tem site?</span>
+    <select formControlName="siteStatus">
+      @for (status of siteStatuses; track status) {
+        <option [value]="status">{{ status }}</option>
+      }
+    </select>
+  </label>
+
+  <label class="lead-form__field">
+    <span class="lead-form__label">Conte rapidamente o que você precisa <small>(opcional)</small></span>
+    <textarea formControlName="message" placeholder="Ex.: quero um site com cardápio e botão de WhatsApp"></textarea>
+  </label>
+
+  <input class="lead-form__trap" formControlName="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <button class="btn btn--wa btn--big lead-form__submit" type="submit" [class.is-sent]="isSent()">
+    @if (isSent()) {
+      <span>✓ Abrindo o WhatsApp…</span>
+    } @else {
+      <span>Enviar pelo WhatsApp</span>
+    }
+  </button>
+  <p class="lead-form__hint">Sem compromisso. Seus dados são usados só para responder seu pedido.</p>
+</form>

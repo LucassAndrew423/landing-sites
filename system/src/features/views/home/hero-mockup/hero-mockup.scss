@@ -1,0 +1,237 @@
+:host {
+  display: block;
+}
+
+.mockup {
+  position: relative;
+  padding: 24px 12px;
+  animation: enter 1.3s var(--ease) 0.5s backwards;
+
+  &__glow {
+    position: absolute;
+    inset: -8% -12%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(140, 120, 255, 0.5), transparent);
+  }
+
+  &__tilt {
+    position: relative;
+  }
+}
+
+.window {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #0d1224;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+  animation: bob 7s ease-in-out infinite;
+  will-change: translate;
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff5f57;
+
+      &:nth-child(2) {
+        background: #febc2e;
+      }
+
+      &:nth-child(3) {
+        background: #28c840;
+      }
+    }
+  }
+
+  &__url {
+    margin-left: 14px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--muted);
+    font-size: 0.74rem;
+  }
+
+  &__body {
+    display: grid;
+    gap: 18px;
+    padding: 20px;
+  }
+}
+
+.site {
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    i {
+      width: 38px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--surface-2);
+    }
+  }
+
+  &__nav &__logo {
+    width: 26px;
+    height: 26px;
+    margin-right: auto;
+    border-radius: 8px;
+    background: var(--grad);
+  }
+
+  &__hero {
+    display: grid;
+    gap: 16px;
+    padding: 24px 20px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(108, 140, 255, 0.22), rgba(176, 107, 255, 0.16));
+  }
+
+  &__lines {
+    display: grid;
+    gap: 10px;
+
+    b {
+      height: 12px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.4);
+      animation: skeleton 3.2s ease-in-out infinite;
+
+      &:nth-child(1) {
+        width: 82%;
+      }
+
+      &:nth-child(2) {
+        width: 64%;
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        width: 40%;
+        height: 8px;
+        animation-delay: 0.4s;
+      }
+    }
+  }
+
+  &__cta {
+    width: 110px;
+    height: 32px;
+    border-radius: 99px;
+    background: var(--grad-wa);
+    box-shadow: 0 8px 22px -8px rgba(37, 211, 102, 0.9);
+  }
+
+  &__cards {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+
+    i {
+      height: 64px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+  }
+}
+
+.chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #10162c;
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.8);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  translate: 0 0;
+
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--wa);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    animation: ping 1.8s ease-out infinite;
+  }
+
+  &--1 {
+    top: -10px;
+    right: -6px;
+    animation: chip-in 0.9s var(--ease) 1.6s backwards, float-a 6s ease-in-out 2.5s infinite;
+  }
+
+  &--2 {
+    bottom: 56px;
+    left: -22px;
+    animation: chip-in 0.9s var(--ease) 1.9s backwards, float-b 7s ease-in-out 2.8s infinite;
+  }
+
+  &--3 {
+    bottom: -14px;
+    right: 26px;
+    animation: chip-in 0.9s var(--ease) 2.2s backwards, float-a 8s ease-in-out 3.1s infinite;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    translate: 0 60px;
+    scale: 0.92;
+  }
+}
+
+@keyframes bob {
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@keyframes skeleton {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+@keyframes float-a {
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@keyframes float-b {
+  50% {
+    translate: 0 12px;
+  }
+}
+
+@keyframes ping {
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}

@@ -1,0 +1,44 @@
+.marquee {
+  overflow: hidden;
+  padding: 26px 0;
+  border-block: 1px solid var(--border);
+  background: var(--surface);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+    will-change: transform;
+  }
+
+  &:hover &__track {
+    animation-play-state: paused;
+  }
+
+  &__list {
+    display: flex;
+    flex-shrink: 0;
+    gap: 14px;
+    padding: 0 7px;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

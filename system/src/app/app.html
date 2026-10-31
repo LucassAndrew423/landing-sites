@@ -1,0 +1,12 @@
+<app-scroll-progress />
+<app-site-header [brandName]="brandName" />
+
+<main>
+  <router-outlet />
+</main>
+
+<footer class="footer">
+  <div class="wrap">© {{ currentYear }} {{ brandName }} · Criação de sites profissionais</div>
+</footer>
+
+<app-whatsapp-float [url]="whatsappUrl" />

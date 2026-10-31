@@ -1,0 +1,11 @@
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    @for (copy of copies; track copy) {
+      <ul class="marquee__list">
+        @for (item of items(); track item) {
+          <li class="marquee__item">{{ item }}</li>
+        }
+      </ul>
+    }
+  </div>
+</div>
