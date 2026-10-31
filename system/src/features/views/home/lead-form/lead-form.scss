@@ -1,0 +1,121 @@
+.lead-form {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -60px;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgba(108, 140, 255, 0.22), transparent);
+    pointer-events: none;
+  }
+
+  @media (max-width: 520px) {
+    padding: 24px 20px;
+  }
+
+  &__field {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    small {
+      color: var(--muted);
+      font-weight: 400;
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    font: inherit;
+    transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+
+    &::placeholder {
+      color: rgba(151, 163, 194, 0.6);
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(108, 140, 255, 0.08);
+      box-shadow: 0 0 0 4px rgba(108, 140, 255, 0.18);
+    }
+
+    &[aria-invalid='true'] {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 4px rgba(255, 122, 133, 0.14);
+    }
+  }
+
+  select option {
+    background: var(--bg-2);
+    color: var(--text);
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  &__error {
+    color: var(--danger);
+    font-size: 0.84rem;
+    font-weight: 500;
+    animation: shake 0.4s var(--ease);
+  }
+
+  &__submit.is-sent {
+    background: var(--grad);
+    box-shadow: 0 14px 44px -8px rgba(108, 140, 255, 0.85);
+    animation: pop 0.5s var(--ease);
+  }
+
+  &__hint {
+    color: var(--muted);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  &__trap {
+    position: absolute;
+    left: -9999px;
+  }
+}
+
+@keyframes shake {
+  25% {
+    translate: -5px 0;
+  }
+
+  75% {
+    translate: 5px 0;
+  }
+}
+
+@keyframes pop {
+  40% {
+    scale: 1.05;
+  }
+}

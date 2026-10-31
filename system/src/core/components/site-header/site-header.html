@@ -1,0 +1,18 @@
+<header class="header" [class.header--scrolled]="isScrolled()" [class.header--hidden]="isHidden()">
+  <div class="wrap header__inner">
+    <a class="header__brand" routerLink="/">
+      {{ brandParts().first }}
+      @if (brandParts().rest) {
+        <span class="gradient-text">{{ brandParts().rest }}</span>
+      }
+    </a>
+
+    <nav class="header__nav" aria-label="Seções da página">
+      @for (link of navLinks; track link.target) {
+        <a class="header__link" [appScrollTo]="link.target">{{ link.label }}</a>
+      }
+    </nav>
+
+    <a class="btn btn--sm" appMagnetic appScrollTo="#contato">Pedir orçamento</a>
+  </div>
+</header>

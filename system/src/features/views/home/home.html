@@ -1,0 +1,150 @@
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="hero__blob hero__blob--1"></span>
+    <span class="hero__blob hero__blob--2"></span>
+    <span class="hero__grid"></span>
+  </div>
+
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow hero__eyebrow">✦ Sites para pequenos negócios</span>
+
+      <h1 class="hero__title" [attr.aria-label]="heroTitle">
+        @for (word of heroWords; track $index) {
+          <span class="word" [class.word--accent]="word.isAccent" [style.--i]="$index" aria-hidden="true">
+            <span class="word__inner">{{ word.text }}</span>
+          </span>
+        }
+      </h1>
+
+      <p class="lead hero__lead">
+        Crio sites profissionais, rápidos e bonitos no celular. Seus clientes te encontram, confiam e chamam direto no
+        seu WhatsApp.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--wa btn--big" appMagnetic appScrollTo="#contato">Quero meu site <span aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--big" appMagnetic appScrollTo="#como-funciona">Como funciona</a>
+      </div>
+
+      <ul class="hero__badges">
+        @for (badge of heroBadges; track badge) {
+          <li>{{ badge }}</li>
+        }
+      </ul>
+    </div>
+
+    <app-hero-mockup class="hero__visual" />
+  </div>
+</section>
+
+<app-marquee [items]="marqueeItems" />
+
+<section id="beneficios" class="section">
+  <div class="wrap">
+    <div class="center" appReveal>
+      <span class="eyebrow">Por que ter um site</span>
+      <h2>Quem não é <span class="gradient-text">encontrado</span> perde cliente.</h2>
+      <p class="lead">Hoje, quem não aparece na internet perde cliente para o concorrente que aparece.</p>
+    </div>
+
+    <div class="grid">
+      @for (benefit of benefits; track benefit.title; let i = $index) {
+        <article class="card" [appReveal]="i * 90" appTilt>
+          <div class="card__icon" aria-hidden="true">{{ benefit.icon }}</div>
+          <h3>{{ benefit.title }}</h3>
+          <p>{{ benefit.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona" class="section section--soft">
+  <div class="wrap">
+    <div class="center" appReveal>
+      <span class="eyebrow">Como funciona</span>
+      <h2>Simples, <span class="gradient-text">sem dor de cabeça.</span></h2>
+      <p class="lead">Três passos entre a sua ideia e o seu site no ar.</p>
+    </div>
+
+    <div class="steps" appScrollFill>
+      <div class="steps__line" aria-hidden="true"><span></span></div>
+      @for (step of steps; track step.title; let i = $index) {
+        <article class="steps__item" [appReveal]="i * 140">
+          <div class="steps__num">{{ i + 1 }}</div>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="center" appReveal>
+      <span class="eyebrow">O que está incluso</span>
+      <h2>Tudo o que seu negócio <span class="gradient-text">precisa.</span></h2>
+    </div>
+
+    <div class="grid">
+      @for (item of includedItems; track item.title; let i = $index) {
+        <article class="card included" [appReveal]="i * 90" appTilt>
+          <span class="included__check" aria-hidden="true">✓</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="wrap">
+    <div class="cta__box" appReveal revealVariant="scale">
+      <h2>Vamos colocar o seu negócio <span class="gradient-text">no ar?</span></h2>
+      <p class="lead">Me chama no WhatsApp, conta o que você faz e eu mostro como pode ficar o seu site.</p>
+      <a class="btn btn--wa btn--big" appMagnetic [href]="whatsappUrl" target="_blank" rel="noopener">Falar agora no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section section--soft">
+  <div class="wrap">
+    <div class="center" appReveal>
+      <span class="eyebrow">Dúvidas</span>
+      <h2>Perguntas <span class="gradient-text">frequentes.</span></h2>
+    </div>
+
+    <div class="faq">
+      @for (item of faqItems; track item.question; let i = $index) {
+        <details [appReveal]="i * 80">
+          <summary>{{ item.question }}</summary>
+          <p>{{ item.answer }}</p>
+        </details>
+      }
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="section">
+  <div class="wrap contact">
+    <div class="contact__copy" appReveal revealVariant="left">
+      <span class="eyebrow">Contato</span>
+      <h2>Peça seu <span class="gradient-text">orçamento.</span></h2>
+      <p class="lead">
+        Preencha o formulário e você será direcionado para o meu WhatsApp com tudo já preenchido. Respondo o mais rápido
+        possível.
+      </p>
+      <p class="lead contact__direct">
+        Prefere falar direto?<br />
+        <a class="btn btn--wa" appMagnetic [href]="whatsappUrl" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </p>
+    </div>
+
+    <div appReveal="120" revealVariant="right">
+      <app-lead-form />
+    </div>
+  </div>
+</section>
